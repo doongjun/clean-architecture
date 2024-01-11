@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hexagonal
+    restart: always
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=hexagonal
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
