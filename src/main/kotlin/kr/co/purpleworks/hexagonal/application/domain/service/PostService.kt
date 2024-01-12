@@ -20,6 +20,7 @@ class PostService(
         return savePostPort.savePost(post)
     }
 
+    @Transactional(readOnly = true)
     override fun get(id: Long): Post {
         return loadPostPort.loadPost(id)
     }
