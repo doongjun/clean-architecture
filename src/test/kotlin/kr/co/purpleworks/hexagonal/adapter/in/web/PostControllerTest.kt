@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(controllers = [PostController::class])
-class PostControllerControllerTest {
+class PostControllerTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
