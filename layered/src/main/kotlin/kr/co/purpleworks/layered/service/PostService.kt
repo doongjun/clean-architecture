@@ -1,6 +1,7 @@
 package kr.co.purpleworks.layered.service
 
 import jakarta.persistence.EntityNotFoundException
+import kr.co.purpleworks.layered.domain.Post
 import kr.co.purpleworks.layered.repository.PostRepository
 import kr.co.purpleworks.layered.service.dto.PostDto
 import kr.co.purpleworks.layered.service.mapper.PostMapper
@@ -15,14 +16,14 @@ class PostService(
     private val postMapper: PostMapper
 ) {
     fun register(dto: PostDto): Long {
-        val post = postRepository.save(postMapper.mapToEntity(dto))
+        val post: Post = postRepository.save(postMapper.mapToEntity(dto))
 
         return post.id
     }
 
     @Transactional(readOnly = true)
     fun get(id: Long): PostDto {
-        val post = postRepository.findByIdOrNull(id)
+        val post: Post = postRepository.findByIdOrNull(id)
             ?: throw EntityNotFoundException()
 
         return postMapper.mapToDto(post)
